@@ -27,4 +27,5 @@ lens.title.value_counts()[:25]
 
 movie_stats = lens.groupby('title').agg({'rating': [np.size, np.mean]})
 movie_stats.head()
-
+atleast_100 = movie_stats['rating']['size'] >= 100
+movie_stats[atleast_100].sort([('rating', 'mean')], ascending=False)[:15]
